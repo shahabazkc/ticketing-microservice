@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+metadata:
+  name: ticketing-microservice
+build:
+  artifacts:
+  - image: shahabazkc10/ticket-auth
+    context: auth
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - infra/k8s/auth-depl.yaml
