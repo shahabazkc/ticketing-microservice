@@ -7,7 +7,7 @@ import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 
 const app = express();
 
@@ -25,6 +25,24 @@ app.all('*', () => {
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000!!!!");
-});
+const start = async () => {
+    try {
+        await mongoose.connect('mongodb://auth-mongo-srv:27017/auth',
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            } as ConnectOptions
+        );
+        console.log("Connected to MongoDb");
+
+    } catch (err) {
+        console.log(err);
+    }
+
+    app.listen(3000, () => {
+        console.log("Listening on port 3000!!!!");
+    });
+
+}
+
+start();
