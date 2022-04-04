@@ -7,7 +7,8 @@ export class Password {
         return hashedPass;
     }
 
-    static compare(suppliedPassword: string, storedPassword: string,) {
-        bcrypt.compare(suppliedPassword, storedPassword).then(passwordMatched => passwordMatched === true ? true : false)
+    static compare(suppliedPassword: string, storedPassword: string) {
+        bcrypt.compare(suppliedPassword, storedPassword)
+        .then(passwordMatched => passwordMatched === true ? true : false)
     }
 };
