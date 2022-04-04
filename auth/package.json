@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts"
+    "start": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.9",
+    "nodemon": "^2.0.15",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"
   },

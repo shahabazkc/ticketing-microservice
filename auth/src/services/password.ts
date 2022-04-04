@@ -7,8 +7,17 @@ export class Password {
         return hashedPass;
     }
 
-    static compare(suppliedPassword: string, storedPassword: string) {
-        bcrypt.compare(suppliedPassword, storedPassword)
-        .then(passwordMatched => passwordMatched === true ? true : false)
+    static async compare(suppliedPassword: string, storedPassword: string) {
+        return new Promise(function (resolve, reject) {
+            bcrypt.compare(suppliedPassword, storedPassword, function (err, res) {
+                if (err) {
+                    reject(false);
+                } else if (res) {
+                    resolve(true);
+                } else {
+                    reject(false);
+                }
+            });
+        });
     }
 };
