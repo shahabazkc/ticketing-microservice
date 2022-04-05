@@ -1,12 +1,14 @@
 "use strict";
 import express from 'express';
 import 'express-async-errors';
-import { NotFoundError,errorHandler,currentUser } from '@shahabazkc-ticket-microservice/common';
+import { NotFoundError, errorHandler, currentUser } from '@shahabazkc-ticket-microservice/common';
 
 import mongoose, { ConnectOptions } from 'mongoose';
 import cookieSession from 'cookie-session';
 import { createTicketRouter } from './routes/new';
-
+import { showTicketRouter } from './routes/show';
+import { indexTicketRouter } from './routes';
+import {updateTicketRouter} from './routes/update';
 const app = express();
 
 app.use(express.json());
@@ -23,9 +25,11 @@ app.use(
 app.use(currentUser);
 
 app.use(createTicketRouter);
+app.use(showTicketRouter);
+app.use(indexTicketRouter);
+app.use(updateTicketRouter);
 
-
-app.all('*', () => {
+app.all('*', () => { 
     throw new NotFoundError()
 });
 
@@ -35,7 +39,7 @@ const start = async () => {
     if (!process.env.JWT_KEY) {
         throw new Error('JWT_KEY must be defined');
     }
-    if(!process.env.MONGO_URI){
+    if (!process.env.MONGO_URI) {
         throw new Error('MONGO_URI must be defined');
     }
 
