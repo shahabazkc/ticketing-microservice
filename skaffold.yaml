@@ -16,3 +16,12 @@ build:
         manual:
           - src: src/**/*.ts
             dest: .
+    - image: shahabazkc10/ticket-tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+    
