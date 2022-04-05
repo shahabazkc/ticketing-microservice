@@ -1,3 +1,7 @@
 auth/node_modules
 tickets/node_modules
 ./tickets/node_modules
+common/.git
+common/.gitignore
+./common/.git
+./common/.gitignore
