@@ -1,3 +1,5 @@
 auth/node_modules
 tickets/node_modules
 ./tickets/node_modules
+./nats-test/node_modules
+/nats-test/node_modules
