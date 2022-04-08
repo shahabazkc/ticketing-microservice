@@ -1,4 +1,4 @@
-name: deply-tests
+name: deploy-auth
 
 on:
   pull_request
