@@ -8,7 +8,10 @@ import cookieSession from 'cookie-session';
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
 import { indexTicketRouter } from './routes';
-import {updateTicketRouter} from './routes/update';
+import { updateTicketRouter } from './routes/update';
+import { natsWrapper } from './nats-wrapper';
+
+
 const app = express();
 
 app.use(express.json());
@@ -29,7 +32,7 @@ app.use(showTicketRouter);
 app.use(indexTicketRouter);
 app.use(updateTicketRouter);
 
-app.all('*', () => { 
+app.all('*', () => {
     throw new NotFoundError()
 });
 
@@ -44,6 +47,7 @@ const start = async () => {
     }
 
     try {
+        await natsWrapper.connect('ticketing', 'laskjf', 'http://nats-srv:4222');
         await mongoose.connect(process.env.MONGO_URI!,
             {
                 useNewUrlParser: true,
