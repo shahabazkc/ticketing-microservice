@@ -7,7 +7,7 @@ import {
   NotAuthorizedError,
 } from '@shahabazkc-ticket-microservice/common';
 import { Ticket } from '../models/ticket';
-import { TicketUpdatePublisher } from '../events/publishers/ticket-updated-publisher';
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
@@ -32,6 +32,10 @@ router.put(
       throw new NotFoundError();
     }
 
+    if(ticket.orderId){
+      throw new BadRequestError('Cannot edit a reserved ticket');
+    }
+
     if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
     }
@@ -43,7 +47,7 @@ router.put(
 
     await ticket.save();
 
-    new TicketUpdatePublisher(natsWrapper.client).publish({
+    new TicketUpdatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
       title: ticket.title,
       price: "" + ticket.price,
