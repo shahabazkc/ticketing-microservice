@@ -7,7 +7,7 @@ import {
   NotAuthorizedError,
 } from '@shahabazkc-ticket-microservice/common';
 import { Ticket } from '../models/ticket';
-import { TicketUpdatePublisher } from '../events/publishers/ticket-update-publisher';
+import { TicketUpdatePublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();

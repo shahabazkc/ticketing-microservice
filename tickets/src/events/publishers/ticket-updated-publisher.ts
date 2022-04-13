@@ -1,5 +1,8 @@
 import { Publisher, Subjects, TicketUpdatedEvent } from '@shahabazkc-ticket-microservice/common';
+import { natsWrapper } from '../../nats-wrapper';
 
-export class TicketUpdatePublisher extends Publisher<TicketUpdatedEvent>{
+export class TicketUpdatedPublisher extends Publisher<TicketUpdatedEvent>{
     subject: Subjects.TicketUpdated = Subjects.TicketUpdated;
 };
+
+
