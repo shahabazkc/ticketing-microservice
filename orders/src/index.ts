@@ -11,6 +11,8 @@ import { showOrderRouter } from './routes/show';
 import { newOrderRouter } from './routes/new';
 import { indexOrderRouter } from './routes';
 import { deleteOrderRouter } from './routes/delete';
+import { TicketCreatedListener } from './events/listeners/ticket-created-listeners';
+import { TicketUpdateListener } from './events/listeners/ticket-updated-listener';
 
 
 const app = express();
@@ -72,6 +74,8 @@ const start = async () => {
         process.on('SIGINT', () => natsWrapper.client.close());
         process.on('SIGTERM', () => natsWrapper.client.close());
 
+        new TicketCreatedListener(natsWrapper.client).listen();
+        new TicketUpdateListener(natsWrapper.client).listen();
 
         await mongoose.connect(process.env.MONGO_URI!,
             {
