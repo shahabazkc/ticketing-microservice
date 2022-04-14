@@ -3,7 +3,7 @@ name: deploy-auth
 on:
   push:
     branches:
-      -main
+      - main
     paths:
       - 'auth/**'
       
