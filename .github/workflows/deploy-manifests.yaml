@@ -3,7 +3,7 @@ name: deploy-manifests
 on:
   push:
     branches:
-      -main
+      - main
     paths:
       - 'infra/**'
       
@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.285.0
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
