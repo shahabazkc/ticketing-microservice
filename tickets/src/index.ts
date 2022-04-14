@@ -81,14 +81,14 @@ const start = async () => {
                 useUnifiedTopology: true,
             } as ConnectOptions
         );
-        console.log("Connected to MongoDb...");
+        console.log("Connected to MongoDb..");
 
     } catch (err) {
         console.log(err);
     }
 
     app.listen(3000, () => {
-        console.log("Listening on port 3000!!..");
+        console.log("Listening on port 3000!!.");
     });
 
 }
