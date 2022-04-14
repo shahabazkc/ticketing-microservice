@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: ticketing.dev
+    - host: www.shahabazkc.xyz
       http:
         paths:
           - path: /api/users/?(.*)
@@ -17,7 +17,7 @@ spec:
                 name: auth-srv
                 port:
                   number: 3000
-    - host: ticketing.dev
+    - host: www.shahabazkc.xyz
       http:
         paths:
           - path: /api/tickets/?(.*)
@@ -27,7 +27,7 @@ spec:
                 name: tickets-srv
                 port:
                   number: 3000
-    - host: ticketing.dev
+    - host: www.shahabazkc.xyz
       http:
         paths:
           - path: /api/orders/?(.*)
