@@ -1,7 +1,9 @@
 name: deploy-auth
 
 on:
-  pull_request:
+  push:
+    branches:
+      -main
     paths:
       - 'auth/**'
   
@@ -10,4 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && npm install
+      - run: cd auth && docker build -t shahabazkc/ticket-auth .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD  }}
+      - run: docker push shahabazkc10/ticket-auth
