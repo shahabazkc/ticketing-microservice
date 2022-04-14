@@ -22,11 +22,7 @@ app.use(
     })
 )
 
-<<<<<<< HEAD
-// Route handlers
-=======
 // Auth Route handlers
->>>>>>> c383787458174a24d2d8461c49a6a51bda29f03e
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
