@@ -68,7 +68,7 @@ const start = async () => {
         );
 
         natsWrapper.client.on('close', () => {
-            console.log("NATS connection closed.");
+            console.log("NATS connection closed");
             process.exit();
         });
 
@@ -85,7 +85,7 @@ const start = async () => {
                 useUnifiedTopology: true,
             } as ConnectOptions
         );
-        console.log("Connected to MongoDb.");
+        console.log("Connected to MongoDb....");
 
     } catch (err) {
         console.log(err);
