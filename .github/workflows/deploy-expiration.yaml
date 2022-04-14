@@ -1,23 +1,23 @@
-name: deploy-orders
+name: deploy-expiration
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'orders/**'
+      - 'expiration/**'
       
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd orders && docker build -t shahabazkc/ticket-orders .
+      - run: cd expiration && docker build -t shahabazkc/ticket-expiration .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD  }}
-      - run: docker push shahabazkc10/ticket-orders
+      - run: docker push shahabazkc10/ticket-expiration
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
