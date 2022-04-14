@@ -22,7 +22,7 @@ app.use(
     })
 )
 
-
+// Route handlers
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
