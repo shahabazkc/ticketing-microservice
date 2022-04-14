@@ -18,3 +18,6 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD  }}
       - run: docker push shahabazkc10/ticket-auth
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token:
