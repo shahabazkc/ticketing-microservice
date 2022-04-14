@@ -28,6 +28,7 @@ app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
 
+// Routes that are not found
 app.all('*', () => {
     throw new NotFoundError()
 });
