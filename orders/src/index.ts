@@ -68,7 +68,7 @@ const start = async () => {
         );
 
         natsWrapper.client.on('close', () => {
-            console.log("NATS connection closed");
+            console.log("NATS connection closed.");
             process.exit();
         });
 
@@ -92,7 +92,7 @@ const start = async () => {
     }
 
     app.listen(3000, () => {
-        console.log("Listening on port 3000!!!!");
+        console.log("Listening on port 3000!!!!.....");
     });
 
 }
