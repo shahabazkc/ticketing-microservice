@@ -1,5 +1,4 @@
 name: deploy-tickets
-
 on:
   pull_request:
     paths:
