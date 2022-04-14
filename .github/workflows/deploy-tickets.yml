@@ -1,4 +1,4 @@
-name: deploy-ticket
+name: deploy-tickets
 
 on:
   push:
