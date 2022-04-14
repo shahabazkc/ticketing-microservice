@@ -13,6 +13,7 @@ import { indexOrderRouter } from './routes';
 import { deleteOrderRouter } from './routes/delete';
 import { TicketCreatedListener } from './events/listeners/ticket-created-listeners';
 import { TicketUpdateListener } from './events/listeners/ticket-updated-listener';
+import { ExpirationCompleteListener } from './events/listeners/expiration-complete-listener';
 
 
 const app = express();
@@ -76,7 +77,8 @@ const start = async () => {
 
         new TicketCreatedListener(natsWrapper.client).listen();
         new TicketUpdateListener(natsWrapper.client).listen();
-
+        new ExpirationCompleteListener(natsWrapper.client).listen();
+        
         await mongoose.connect(process.env.MONGO_URI!,
             {
                 useNewUrlParser: true,
